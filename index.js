@@ -11,6 +11,17 @@ var stdin = process.stdin,
 
 const Platform = require("./Platfrom");
 
+// let raw_data_2 = fs.readFileSync("input.json");
+// let input_data = JSON.parse(raw_data_2);
+// let platform = new Platform(
+//   config_data["sites"],
+//   config_data["bidders"],
+//   input_data
+// );
+// platform.runAuction();
+// let outputJSON = JSON.stringify(platform.getFinalBids());
+// console.log(outputJSON);
+
 stdin.resume();
 stdin.setEncoding("utf8");
 
@@ -32,9 +43,6 @@ stdin.on("end", function () {
   stdout.write(outputJSON);
   stdout.write("\n");
 });
-
-// let raw_data_2 = fs.readFileSync("input.json");
-// let input_data = JSON.parse(raw_data_2);
 
 // outputJSON = JSON.stringify(parsedData, null, "    ");
 //   stdout.write(outputJSON);
