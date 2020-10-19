@@ -8,5 +8,9 @@
     "start": "node index.js"
   },
   "author": "Sanjar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0"
+  }
 }
