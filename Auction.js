@@ -25,11 +25,13 @@ class Auction {
 
   setMaxUnitBid(bid, bidder) {
     this.validBids++;
+
     let currentBidForUnit = this.unitBidMap[bid["unit"]];
-    if (currentBidForUnit.length === 0) {
+    if (currentBidForUnit.length === undefined) {
       this.unitBidMap[bid["unit"]] = bid;
     } else {
       let adjustedAmount = bid["bid"] * (1 + bidder.adjustment);
+      console.log(adjustedAmount);
       if (adjustedAmount > currentBidForUnit["bid"]) {
         this.unitBidMap[bid["unit"]] = bid;
       }
@@ -44,3 +46,5 @@ class Auction {
     }
   }
 }
+
+module.exports = Auction;

@@ -50,14 +50,14 @@ class Platform {
   runAuction() {
     this.auctions.forEach((auction) => {
       if (this.isSiteInvalid(auction.site)) {
-        continue;
+        return;
       }
       auction.bids.forEach((bid) => {
         if (this.isBidderInvalid(auction.site, bid["bidder"])) {
-          continue;
+          return;
         }
         if (auction.isUnitInvalid(bid["unit"])) {
-          continue;
+          return;
         }
         if (
           !auction.isFloor(
@@ -66,19 +66,21 @@ class Platform {
             this.bidders[bid["bidder"]]
           )
         ) {
-          continue;
+          return;
         }
-        auction.setMaxUnitBids(bid, this.bidders[bid["bidder"]]);
+        auction.setMaxUnitBid(bid, this.bidders[bid["bidder"]]);
       });
     });
   }
   getFinalBids() {
-    auctionResults = [];
+    let auctionResults = [];
     this.auctions.forEach((auction) => {
       auction.setFinalBids();
       auctionResults.push(auction.finalBids);
     });
 
-    console.log(auctionResults);
+    return auctionResults;
   }
 }
+
+module.exports = Platform;

@@ -4,3 +4,5 @@ class Bidder {
     this.adjustment = adjustment;
   }
 }
+
+module.exports = Bidder;
