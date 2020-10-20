@@ -3,13 +3,13 @@ const Bidder = require("./Bidder");
 const Auction = require("./Auction");
 
 class Platform {
-  constructor(sites, bidders, auctions) {
+  constructor(config_data, input_data) {
     this.sites = {};
     this.bidders = {};
     this.auctions = [];
-    this.initSites(sites);
-    this.initBidders(bidders);
-    this.initAuctions(auctions);
+    this.initSites(config_data["sites"]);
+    this.initBidders(config_data["bidders"]);
+    this.initAuctions(input_data);
   }
 
   initSites(sites) {
@@ -33,9 +33,7 @@ class Platform {
 
   initAuctions(auctions) {
     auctions.forEach((auction) => {
-      this.auctions.push(
-        new Auction(auction["site"], auction["units"], auction["bids"])
-      );
+      this.auctions.push(new Auction(auction));
     });
   }
 
@@ -44,7 +42,7 @@ class Platform {
   }
 
   isBidderInvalid(site, bidderName) {
-    return !(this.bidders[bidderName] || this.sites[site].bidders[bidderName]);
+    return !this.bidders[bidderName] || !this.sites[site].bidders[bidderName];
   }
 
   runAuction() {

@@ -1,9 +1,11 @@
 class Auction {
-  constructor(site, units, bids) {
-    this.site = site;
-    this.bids = bids;
+  constructor(auction) {
+    this.site = auction["site"];
+    this.bids = auction["bids"];
     this.unitBidMap = {};
-    this.initUnitBidMap(units);
+    this.adjustedBidsPerUnit = {};
+    this.initUnitBidMap(auction["units"]);
+
     this.finalBids = [];
     this.validBids = 0;
   }
@@ -11,6 +13,7 @@ class Auction {
   initUnitBidMap(units) {
     units.forEach((unit) => {
       this.unitBidMap[unit] = {};
+      this.adjustedBidsPerUnit[unit] = {};
     });
   }
 
@@ -27,13 +30,19 @@ class Auction {
     this.validBids++;
 
     let currentBidForUnit = this.unitBidMap[bid["unit"]];
+
     if (!Object.keys(currentBidForUnit).length) {
       this.unitBidMap[bid["unit"]] = bid;
+      this.adjustedBidsPerUnit[bid["unit"]] =
+        bid["bid"] * (1 + bidder.adjustment);
     } else {
       let adjustedAmount = bid["bid"] * (1 + bidder.adjustment);
-      process.stdout.write("here\n");
-      if (adjustedAmount > currentBidForUnit["bid"]) {
+      // let currentBidAdjusted = bidders[currentBidForUnit["bidder"]].adjustment;
+      // let currentAdjustedAmount =
+      //   currentBidForUnit["bid"] * (1 + currentBidAdjusted);
+      if (adjustedAmount > this.adjustedBidsPerUnit[bid["unit"]]) {
         this.unitBidMap[bid["unit"]] = bid;
+        this.adjustedBidsPerUnit[bid["unit"]] = adjustedAmount;
       }
     }
   }

@@ -33,11 +33,7 @@ stdin.on("end", function () {
   var inputJSON = inputChunks.join("");
   parsedData = JSON.parse(inputJSON);
   console.log(parsedData);
-  let platform = new Platform(
-    config_data["sites"],
-    config_data["bidders"],
-    parsedData
-  );
+  let platform = new Platform(config_data, parsedData);
   platform.runAuction();
   outputJSON = JSON.stringify(platform.getFinalBids());
   stdout.write(outputJSON);
