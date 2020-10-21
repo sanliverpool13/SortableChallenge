@@ -19,4 +19,5 @@ array, and for each it checked whether auctions were valid for the site. For eac
 The platform had methods to check whether the current auction's site was valid, whether a bid's bidder was valid. 
 The auction had methods to check whether the bids is larger than the floor amount and whether the unit being bid on was valid.
 
-
+## Testing
+I tested the algorithm by running `npm test`, and by running the docker container as well. I hope I didn't miss anything.
