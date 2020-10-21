@@ -27,7 +27,6 @@ class Auction {
   }
 
   setMaxUnitBid(bid, bidder) {
-    if (this.site === "houseofcoffee.com");
     this.validBids++;
 
     let currentBidForUnit = this.unitBidMap[bid["unit"]];
