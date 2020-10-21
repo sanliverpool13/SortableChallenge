@@ -407,12 +407,10 @@ describe("Auction Set Current Max Bid Method", function () {
 });
 
 describe("Test the output of platform running entire algorithm by running auction", function () {
-  it("Run platfrom runAuction method", function () {
+  it("Run platfrom runAuction method for a large number of inputs", function () {
     let platform = new Platform(configData, inputData);
     platform.runAuction();
     let results = platform.getFinalBids();
-
-    console.log(results);
 
     expect(results).to.have.deep.members(outputData);
   });

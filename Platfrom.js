@@ -50,6 +50,7 @@ class Platform {
       if (this.isSiteInvalid(auction.site)) {
         return;
       }
+
       auction.bids.forEach((bid) => {
         if (this.isBidderInvalid(auction.site, bid["bidder"])) {
           return;
@@ -66,6 +67,7 @@ class Platform {
         ) {
           return;
         }
+
         auction.setMaxUnitBid(bid, this.bidders[bid["bidder"]]);
       });
     });
@@ -74,6 +76,7 @@ class Platform {
     let auctionResults = [];
     this.auctions.forEach((auction) => {
       auction.setFinalBids();
+
       auctionResults.push(auction.finalBids);
     });
 

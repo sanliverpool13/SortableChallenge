@@ -27,6 +27,7 @@ class Auction {
   }
 
   setMaxUnitBid(bid, bidder) {
+    if (this.site === "houseofcoffee.com");
     this.validBids++;
 
     let currentBidForUnit = this.unitBidMap[bid["unit"]];
@@ -37,9 +38,6 @@ class Auction {
         bid["bid"] * (1 + bidder.adjustment);
     } else {
       let adjustedAmount = bid["bid"] * (1 + bidder.adjustment);
-      // let currentBidAdjusted = bidders[currentBidForUnit["bidder"]].adjustment;
-      // let currentAdjustedAmount =
-      //   currentBidForUnit["bid"] * (1 + currentBidAdjusted);
       if (adjustedAmount > this.adjustedBidsPerUnit[bid["unit"]]) {
         this.unitBidMap[bid["unit"]] = bid;
         this.adjustedBidsPerUnit[bid["unit"]] = adjustedAmount;
