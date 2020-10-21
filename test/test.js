@@ -1,8 +1,7 @@
 const expect = require("chai").expect;
 const Site = require("../Site");
-const Bidder = require("../../Bidder");
+// const Bidder = require("../../Bidder");
 const Auction = require("../Auction");
-const Platfrom = require("../Platfrom");
 const Platform = require("../Platfrom");
 
 const configData = require("./config");
@@ -10,15 +9,15 @@ const inputData = require("./input");
 const outputData = require("./output");
 
 describe("Classes Created With Expected Parameters", function () {
-  it("Bidder Object Has Name and Adjustment rate", function () {
-    let name = "AUCT";
-    let adjustment = -0.0625;
+  // it("Bidder Object Has Name and Adjustment rate", function () {
+  //   let name = "AUCT";
+  //   let adjustment = -0.0625;
 
-    let bidder = new Bidder(name, adjustment);
+  //   let bidder = new Bidder(name, adjustment);
 
-    expect(bidder.name).to.be.equal("AUCT");
-    expect(bidder.adjustment).to.be.equal(-0.0625);
-  });
+  //   expect(bidder.name).to.be.equal("AUCT");
+  //   expect(bidder.adjustment).to.be.equal(-0.0625);
+  // });
 
   it("Site Object Has Name, floor and a list of bidders", function () {
     let name = "houseofcheese.com";
