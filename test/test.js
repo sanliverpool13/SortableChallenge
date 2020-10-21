@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 const Site = require("../Site");
-const Bidder = require("../Bidder");
+const Bidder = require("../../Bidder");
 const Auction = require("../Auction");
 const Platfrom = require("../Platfrom");
 const Platform = require("../Platfrom");
@@ -76,7 +76,7 @@ describe("Classes Created With Expected Parameters", function () {
         bid: 55,
       },
     ]);
-    expect(auction.unitBidMap).to.have.keys(["banner", "sidebar"]);
+    expect(auction.bidsPerUnitMap).to.have.keys(["banner", "sidebar"]);
     expect(auction.finalBids).to.deep.equal([]);
     expect(auction.validBids).to.be.equal(0);
   });
@@ -306,32 +306,32 @@ describe("Auction Set Current Max Bid Method", function () {
 
     let auction = new Auction(singleAuction);
 
-    expect(auction.unitBidMap).to.deep.include({ banner: {}, sidebar: {} });
+    expect(auction.bidsPerUnitMap).to.deep.include({ banner: {}, sidebar: {} });
 
     auction.setMaxUnitBid(singleAuction["bids"][0], bidders[0]);
 
-    expect(auction.unitBidMap).to.deep.include({
+    expect(auction.bidsPerUnitMap).to.deep.include({
       banner: singleAuction["bids"][0],
       sidebar: {},
     });
 
     auction.setMaxUnitBid(singleAuction["bids"][1], bidders[1]);
 
-    expect(auction.unitBidMap).to.deep.include({
+    expect(auction.bidsPerUnitMap).to.deep.include({
       banner: singleAuction["bids"][0],
       sidebar: singleAuction["bids"][1],
     });
 
     auction.setMaxUnitBid(singleAuction["bids"][2], bidders[1]);
 
-    expect(auction.unitBidMap).to.deep.include({
+    expect(auction.bidsPerUnitMap).to.deep.include({
       banner: singleAuction["bids"][2],
       sidebar: singleAuction["bids"][1],
     });
 
     auction.setMaxUnitBid(singleAuction["bids"][3], bidders[1]);
 
-    expect(auction.unitBidMap).to.deep.include({
+    expect(auction.bidsPerUnitMap).to.deep.include({
       banner: singleAuction["bids"][2],
       sidebar: singleAuction["bids"][1],
     });

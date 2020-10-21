@@ -1,5 +1,4 @@
 const Site = require("./Site");
-const Bidder = require("./Bidder");
 const Auction = require("./Auction");
 
 class Platform {
@@ -24,10 +23,7 @@ class Platform {
 
   initBidders(bidders) {
     bidders.forEach((bidder) => {
-      this.bidders[bidder["name"]] = new Bidder(
-        bidder["name"],
-        bidder["adjustment"]
-      );
+      this.bidders[bidder["name"]] = bidder;
     });
   }
 
