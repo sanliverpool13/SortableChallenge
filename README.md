@@ -19,5 +19,10 @@ array, and for each it checked whether auctions were valid for the site. For eac
 The platform had methods to check whether the current auction's site was valid, whether a bid's bidder was valid. 
 The auction had methods to check whether the bids is larger than the floor amount and whether the unit being bid on was valid.
 
+## Entry Point 
+The program is run by running the command `npm start`. index.js is the file that is run. It imports the Platform class and creates an object.
+It gets data from the config.json file, as well as from the stdin of the nodejs process. Once all the lines from stdin are read and collected into
+an array, the array is converted to JSON and is fed into method to create a new platform object.
+
 ## Testing
 I tested the algorithm by running `npm test`, and by running the docker container as well. I hope I didn't miss anything.
